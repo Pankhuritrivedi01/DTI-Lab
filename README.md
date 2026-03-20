@@ -12,7 +12,7 @@ Built by **Pankhuri Trivedi** | B.Tech Bioinformatics | Amity Institute of Biote
 
 ## 🚀 Live Demo
 
-👉 [huggingface.co/spaces/ptiee1905/dti-lab](https://huggingface.co/spaces/ptiee1905/dti-lab)
+👉[huggingface.co/spaces/ptiee1905/dti-lab](https://huggingface.co/spaces/ptiee1905/dti-lab)
 
 ---
 
