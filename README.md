@@ -1,15 +1,98 @@
----
-title: DTI Lab
-emoji: 🧬
-colorFrom: blue
-colorTo: green
-sdk: streamlit
-app_port: 7860
----
+🧬 DTI-Lab — Drug Target Interaction Laboratory
+A machine learning web application for predicting drug-target interaction (DTI) probability using molecular features, cheminformatics, and ensemble classifiers.
+Built by Pankhuri Trivedi | B.Tech Bioinformatics | Amity Institute of Biotechnology, Amity University, Noida
 
-# DrugTargetAI
+🚀 Live Demo
+👉 huggingface.co/spaces/ptiee1905/dti-lab
 
-Drug–Target Interaction Prediction Deployment
+📌 What It Does
+
+Predicts the probability of interaction between a drug molecule and a target protein
+Validates against 20+ ChEMBL / DrugBank reference pairs (BCR-ABL, EGFR, BRAF, TP53, BRCA1/2...)
+Computes RDKit molecular descriptors from SMILES strings
+Applies Lipinski Rule of Five drug-likeness filter
+Provides SHAP feature importance for interpretable predictions
+Supports batch prediction via CSV upload
 
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+🖥️ Features
+FeatureDescriptionSingle PredictionEnter drug + protein + SMILES → instant DTI scoreBatch AnalysisUpload CSV of drug-target pairs → download resultsMolecular DescriptorsMW, LogP, HBD, HBA, TPSA, Aromatic Rings (RDKit)SHAP ExplainabilityFeature importance ranked by contributionLipinski CheckRule of Five drug-likeness validationValidated PairsChEMBL/DrugBank reference scores for known drugs
+
+🧪 Example Predictions
+DrugTargetExpected ScoreImatinibBCR-ABL~97% (validated)ErlotinibEGFR~95% (validated)AspirinCOX-1~89% (validated)AtorvastatinHMGCR~96% (validated)CaffeineAdenosine~78% (validated)UnknownDrugTP53ML prediction
+
+🛠️ Tech Stack
+Language        Python 3.10+
+ML              Scikit-learn, XGBoost, Random Forest
+Cheminformatics RDKit, Morgan Fingerprints (2048-bit), SMILES
+Databases       ChEMBL, DrugBank, NCBI, UniProt, ClinVar
+Explainability  SHAP feature importance
+Frontend        Streamlit
+Deployment      Hugging Face Spaces
+Tracking        MLflow (local), Git
+
+📁 Project Structure
+dti-lab/
+│
+├── app.py                  # Main Streamlit application (HF Spaces entry point)
+├── requirements.txt        # Python dependencies
+├── README.md               # This file
+│
+├── api/
+│   └── main.py             # FastAPI backend (local use)
+│
+├── dashboard/
+│   └── app.py              # Streamlit dashboard (local use)
+│
+└── start.py                # Local multi-service launcher
+
+⚙️ Run Locally
+bash# Clone the repo
+git clone https://github.com/YOURUSERNAME/DTI-Lab.git
+cd DTI-Lab
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run Streamlit app
+streamlit run app.py
+
+# OR run full local stack (API + Dashboard + MLflow)
+python start.py
+
+📊 Pipeline Architecture
+Drug Name + Target Protein + SMILES
+              │
+              ▼
+    ┌─────────────────────┐
+    │   RDKit Features    │  MW, LogP, HBD, HBA, TPSA, Rings
+    │   Morgan FP (2048)  │  Radius = 2
+    └──────────┬──────────┘
+               │
+               ▼
+    ┌─────────────────────┐
+    │   Random Forest     │  n_estimators=100, max_depth=7
+    │   10-fold Strat. CV │  Stratified cross-validation
+    └──────────┬──────────┘
+               │
+               ▼
+    ┌─────────────────────┐
+    │   SHAP Values       │  Feature importance ranking
+    │   Lipinski Filter   │  Drug-likeness modifier
+    └──────────┬──────────┘
+               │
+               ▼
+         DTI Score (0–1)
+    HIGH ≥ 0.85 | MID ≥ 0.60 | LOW < 0.60
+
+📦 Requirements
+streamlit>=1.32.0
+scikit-learn>=1.3.0
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+rdkit>=2023.3.1
+
+👩‍🔬 About
+Pankhuri Trivedi
+B.Tech Bioinformatics 
