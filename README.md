@@ -1,12 +1,5 @@
 **---
-title: DTI-Lab
-emoji: 🧬
-colorFrom: blue
-colorTo: teal
-sdk: streamlit
-sdk_version: 1.32.0
-app_file: app.py
-pinned: false
+
 ---
 
 # 🧬 DTI-Lab — Drug Target Interaction Laboratory
