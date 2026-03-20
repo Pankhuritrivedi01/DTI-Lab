@@ -3,7 +3,7 @@ title: DTI Lab
 emoji: 🧬
 colorFrom: blue
 colorTo: green
-sdk: docker
+sdk: streamlit
 app_port: 7860
 ---
 
