@@ -493,21 +493,7 @@ elif "ℹ️ About" in page:
         st.markdown("""
 #### Researcher
 **Pankhuri Trivedi**
-B.Tech Bioinformatics
-CGPA: 7.74/10
-Amity Institute of Biotechnology
-Amity University, Noida, UP
-
----
-**Other Projects**
-- BioRetrive — Biomedical RAG System
-- Health Risk Identifier
-- Heart Disease Risk Assessment
-
----
-*Seeking internship at:*
-Core Diagnostics · Genomix Biotech
-Genomia Diagnostics Research
+B.Tech Bioinformatics · Amity University, Noida
         """)
 
 ################################################################
@@ -515,6 +501,5 @@ Genomia Diagnostics Research
 ################################################################
 
 st.markdown("""<div class="dti-footer">
-DTI-Lab · Pankhuri Trivedi · Amity Institute of Biotechnology, Noida ·
-Streamlit + RDKit + Scikit-learn · Hugging Face Spaces
+DTI-Lab · Built by Pankhuri Trivedi · Streamlit + RDKit + Scikit-learn
 </div>""", unsafe_allow_html=True)
